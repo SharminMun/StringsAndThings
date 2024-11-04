@@ -59,20 +59,21 @@ public class StringsAndThings {
      */
     public Boolean containsEqualNumberOfIsAndNot(String input){
 
-        int two = 0;
-        int a;
-        a = input.indexOf("is");
-        while (a != -1)
-        {
-            two++;
-            a = input.indexOf("",a+2);
+        int isNum = 0;
+        int notNum = 0;
+        boolean uff = false;
+        String not = "not";
+        String is ="is";
+    //Loop for is
+        for (int i=0; i<input.length()-1;i++){
+            String substring = input.substring(i, i+2);
+            if (substring.equals(is)) isNum++; }
+        for (int i=0; i<input.length()-2;i++) {
+            String substring = input.substring(i,i+3);
+            if (substring.equals(not)) notNum++;
         }
-        a = input.indexOf("not");
-        while (a != -1) {
-            two--;
-            a = input.indexOf("not", a + 3);
-        }
-        return two==0;
+        if (isNum == notNum) uff = true;
+        return uff ;
     }
 
     /**
@@ -99,6 +100,7 @@ public class StringsAndThings {
                     return false;
                 }
             }
+        }
             return true;
         }
 
